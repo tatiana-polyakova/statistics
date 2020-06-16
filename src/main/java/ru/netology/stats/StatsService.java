@@ -18,11 +18,7 @@ public class StatsService {
 
     public float middle(int[] value) {
         float result;
-        int sum = 0;
-
-        for (int element : value) {
-            sum = sum + element;
-        }
+        int sum = sum(value);
         int count = value.length;
         result = (float) sum / count;
 
@@ -62,17 +58,11 @@ public class StatsService {
     }
 
     public int belowAverage(int[] value) {
-        int sum = 0;
+        float middleValue = middle(value);
         int result = 0;
 
         for (int element : value) {
-            sum = sum + element;
-        }
-        int count = value.length;
-        float middle = (float) sum / count;
-
-        for (int element : value) {
-            if (middle > element) {
+            if (middleValue > element) {
                 result = result + 1;
             }
         }
@@ -80,17 +70,11 @@ public class StatsService {
     }
 
     public int aboveAverage(int[] value) {
-        int sum = 0;
+        float middleValue = middle(value);
         int result = 0;
 
         for (int element : value) {
-            sum = sum + element;
-        }
-        int count = value.length;
-        float middle = (float) sum / count;
-
-        for (int element : value) {
-            if (middle < element) {
+            if (middleValue < element) {
                 result = result + 1;
             }
         }
